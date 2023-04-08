@@ -1,1 +1,11 @@
-test
+#!/bin/bash
+puppet resource package git ensure=present
+puppet resource package apache2 ensure=present
+puppet resource service apache2 ensure=running
+puppet resource file /tmp/22051086/clone ensure=absent force=true
+puppet resource file /tmp ensure=directory
+puppet resource file /tmp/22051086 ensure=directory
+puppet resource file /tmp/22051086/clone ensure=directory
+cd /tmp/22051086/clone
+git clone https://github.com/22051086/22051086_repo.git
+cp -p /tmp/22051086/clone/22051086_repo/22051086_index.html /var/www/html/index.html
