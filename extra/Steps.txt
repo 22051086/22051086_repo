@@ -1,0 +1,25 @@
+Steps
+First is to create a docker network
+docker network create --subnet=192.168.0.0/24 customnetwork
+once network is created we can create the docker image with puppet and the required tools
+docker  run  -it  --name  puppetclient1 -h puppetclient1.localdomain  ubuntu:18.04  /bin/bash
+apt-get update
+apt-get install curl wget vim iputils-ping net-tools openssh-server
+wget --content-disposition 'https://pm.puppetlabs.com/puppet-agent/2021.5.0/7.14.0/repos/deb/bionic/puppet7/puppet-agent_7.14.0-1bionic_amd64.deb'
+dpkg -i puppet-agent_7.14.0-1bionic_amd64.deb
+docker commit puppetclient1 puppetclient-image
+once done we can spin up our server
+docker run -d  - -network customnetwork --privileged -h “22051086-websvr.localdomain” - -name 22051086-websvr  - -add-host “<cfw-vm-hostname>:<cwf-vm-ip>”  - -ip “192.168.0.3” puppetclient-image /sbin/init
+verify the entry in 
+cat /etc/hosts of container -lab6 3.1
+add the entry in vim 
+/etc/puppetlabs/puppet/puppet.conf lab6 3.2
+send req from agent to master 
+/opt/puppetlabs/bin/puppet agent -t
+get master to sign 
+/opt/puppetlabs/bin/puppetserver ca sign --all
+
+
+
+
+
