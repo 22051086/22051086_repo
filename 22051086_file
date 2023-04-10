@@ -26,7 +26,6 @@ pipeline {
         stage('22051086 STG2') {
             steps {
 				sh ''' 
-				#testing bolt script logic
 				bolt script run $WORKSPACE/22051086_script -t 22051086-websvr.localdomain -u clientadm -p pass123 --no-host-key-check --run-as root
 				echo "22051086 STG2 - Push to production web server completed"
 				'''
@@ -46,8 +45,7 @@ pipeline {
 		stage('22051086 STG4') {
             steps {
 				sh ''' 
-				#testing output
-				curl -l http://22051086-websvr.localdomain | head -n 1 > /tmp/web-test-result
+				curl -Is http://22051086-websvr.localdomain | head -n 1 > /tmp/web-test-result
 				cat /tmp/web-test-result
 				echo "STG4: Production wev server testing completed"
 				'''
