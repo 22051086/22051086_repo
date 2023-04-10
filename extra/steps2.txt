@@ -1,0 +1,18 @@
+install puppet bolt on host
+root@sddo-vm: wget https://apt.puppet.com/puppet-tools-release-bionic.deb
+root@sddo-vm: dpkg -i puppet-tools-release-bionic.deb
+root@sddo-vm:  apt-get update 
+root@sddo-vm:  apt-get install puppet-bolt
+
+ensure host is updated lesson 7 1.2
+root@sddo-vm:  cat /etc/hosts 
+
+Add a new user and set its password to container 
+
+root@puppetclient1: useradd clientadm  -m  -d /home/clientadm
+root@puppetclient1: passwd clientadm
+usermod -G sudo clientadm
+
+bolt command run ‘cat /etc/shadow’ -t puppetclient1.localdomain -u clientadm -p user123  - -no-host-key-check  - -run-as root
+
+bolt script run ‘/root/testscript.sh -t puppetclient1.localdomain,puppetclient2.localdomain  -u clientadm -p user123  - -no-host-key-check
