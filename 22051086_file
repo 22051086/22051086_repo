@@ -26,7 +26,8 @@ pipeline {
         stage('22051086 STG2') {
             steps {
 				sh ''' 
-				echo "Bolt script run here"
+				#testing bolt script logic
+				bolt script run '/tmp/test.sh' -t 22051086-websvr.localdomain -u clientadm -p pass123 --no-host-key-check
 				echo "22051086 STG2 - Push to production web server completed"
 				'''
             }
@@ -45,7 +46,8 @@ pipeline {
 		stage('22051086 STG4') {
             steps {
 				sh ''' 
-				echo "curl command here"
+				#testing output
+				ls /tmp/testing.txt
 				echo "STG4: Production wev server testing completed"
 				'''
             }
