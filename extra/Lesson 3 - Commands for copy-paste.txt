@@ -2,7 +2,7 @@ root@nagios> sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 
 root@nagios> sudo nano /etc/hosts
 --> add this line: 192.168.100.11	apacheweb.localdomain
---> add this line: 192.168.100.12	postgresdb.localdomain
+--> add this line: 192.168.100.12	postgres.localdomain
 
 root@nagios> docker run -d --name apache2-container -e TZ=SGT -p 8011:80 ubuntu/apache2:LTS
 root@nagios> docker exec -it apache2-container /bin/bash
