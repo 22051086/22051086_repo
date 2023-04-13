@@ -16,7 +16,9 @@ root@nagios> docker commit apache2-container apache2-image
 
 root@nagios> docker run -d --privileged -h "apacheweb.localdomain" --name apacheweb --add-host "sddo-vm.localdomain:172.20.113.93" --ip "192.168.100.11" apache2-image
 
-root@nagios> docker run -d --privileged -h "apacheweb.localdomain" --name apacheweb --add-host "sddo-vm.localdomain:172.20.113.93" --ip "192.168.100.11" -e TZ=SGT -p 8011:80 ubuntu/apache2:latest
+docker run -d --privileged -h "apacheweb.localdomain" --name apacheweb --add-host "sddo-vm.localdomain:172.20.113.93" --ip "192.168.100.11" -e TZ=SGT -p 8011:80 ubuntu/apache2:latest
+
+docker run -d  --network customnetwork2 --privileged -h “apacheweb.localdomain” - -name apacheweb  - -add-host “sddo-vm.localdomain:172.20.115.226”  - -ip “192.168.100.11” -e TZ=SGT -p 8011:80 ubuntu/apache2:latest
 
 root@nagios> docker network connect --ip "192.168.100.11" customnetwork apacheweb
 
