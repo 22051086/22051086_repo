@@ -13,7 +13,7 @@ root@apacheweb> adduser nagios
 
 Step 2. Nagios Server:
 root@nagios-server> su - nagios
-nagios@nagios-server> ssh-keygen -t rsa -b 4096 -C "nagios@nagios-server.localdomain" 
+nagios@nagios-server> ssh-keygen -t rsa -b 4096 -C "nagios@sddo-vm.localdomain" 
 nagios@nagios-server> ssh-copy-id nagios@apacheweb 
 
 Step 3. ApacheWeb:
