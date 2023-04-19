@@ -19,6 +19,8 @@ send req from agent to master
 get master to sign 
 /opt/puppetlabs/bin/puppetserver ca sign --all
 
+bolt command run ‘ls -lrt’ -t puppetclient1.localdomain -u clientadm -p user123  - -no-host-key-check  - -run-as root 
+
 
 
 
