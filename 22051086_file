@@ -13,6 +13,7 @@ pipeline {
     stages {
 		stage("22051086 STG1") {
             input {
+	    
                 message "22051086 STG1:Push change to production web server?"
                 ok "Proceed"
 		
