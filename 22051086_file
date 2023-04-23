@@ -15,6 +15,7 @@ pipeline {
             input {
                 message "22051086 STG1:Push change to production web server?"
                 ok "Proceed"
+		
             }
             steps {
                 echo "Proceeding"
